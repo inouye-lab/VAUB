@@ -1,0 +1,33 @@
+name: vaub-pnp-da-svhn
+
+dataset:
+  src: svhn
+  tgt: mnist
+  img_size: 32
+  root: "data"
+  num_classes: 10
+
+epoch: 1000
+logger: false
+#load: true
+save: True
+save_path: "saved_models"
+logger_path: "logs"
+seed: 8080
+gpus: 2
+num_domain: 2
+
+training:
+  backbone: svhn
+  lr: 1e-4
+  batch_size: 784
+  num_workers: 24
+  lambda_vaub: 1
+  latent_dim: 2048
+  pz: "MoG"
+  n_components: 10
+  weight_decay: 0.0
+  num_visual: 8
+  inject_noise: False
+  noise_scale: 10
+

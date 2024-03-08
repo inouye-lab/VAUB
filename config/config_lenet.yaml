@@ -1,0 +1,35 @@
+name: vaub-pnp-da-lenet-baseline
+
+dataset:
+  src: mnist
+  tgt: mnist_m
+  img_size: 28
+  root: "data"
+  num_classes: 10
+
+epoch: 50
+logger: false
+#load: true
+save: True
+save_path: "saved_models"
+logger_path: "logs"
+seed: 8080
+gpus: 2
+num_domain: 2
+
+training:
+  backbone: lenet
+  lr: 1e-3
+  lr_warmup_epochs: 50
+  lr_decay_epochs: 180
+  lr_qz_freeze: 0
+  batch_size: 128
+  num_workers: 24
+  lambda_vaub: 1
+  latent_dim: 768
+  pz: "MoG"
+  n_components: 1
+  weight_decay: 0.0
+  num_visual: 8
+  inject_noise: False
+
